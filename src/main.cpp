@@ -16,7 +16,7 @@ int main(int argc, char** argv){
 	if (win == nullptr){
 		std::cout << SDL_GetError() << std::endl;
 		return 1;
-		}
+    }
 
 	SDL_Renderer *ren = nullptr;
 	ren = SDL_CreateRenderer(win, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
@@ -25,14 +25,14 @@ int main(int argc, char** argv){
 		return 1;
 	}
 
-    Paddle paddle1,                           paddle2;
+    Paddle paddle1,                      paddle2;
     paddle1.SetTexture("assets/paddle.png", ren);
     paddle2.SetTexture("assets/paddle.png", ren);
     int w1, h1, w2, h2;
     SDL_QueryTexture(paddle1.GetTexture(), NULL, NULL, &w1, &h1);
     SDL_QueryTexture(paddle2.GetTexture(), NULL, NULL, &w2, &h2);
     paddle1.Setx(0 + 5);                      paddle2.Setx(640 - w2  - 5);
-    paddle1.Sety(240 - h1/2);                          paddle2.Sety(240 - h2/2);
+    paddle1.Sety(240 - h1/2);                 paddle2.Sety(240 - h2/2);
 
     KB_State kbstate;
 
