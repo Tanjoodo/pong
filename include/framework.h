@@ -7,6 +7,8 @@
 #include "SDL2/SDL_image.h"
 #include "SDL2/SDL_ttf.h"
 
+#define SCREEN_HEIGHT 480
+#define SCREEN_WIDTH 960
 
 void logSDLError(std::ostream, std::string&);
 

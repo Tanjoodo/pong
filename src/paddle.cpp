@@ -15,8 +15,8 @@ void Paddle::MoveX(int direction)
 
 void Paddle::MoveY(int direction)
 {
-    if (Gety() + direction > 480) return;
-    if (Gety() + direction < 0 - 128) return;
+    if (Gety() + direction > SCREEN_HEIGHT) return;
+    if (Gety() + direction <  -aabb.h) return;
     Sety(Gety() + direction);
     Update_AABB();
 }

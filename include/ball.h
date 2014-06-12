@@ -15,10 +15,11 @@ class Ball : public GameObject
     protected:
     private:
         int direction = -5;
-        int v_direction = 1;
+        int v_direction = 5;
         AABB bottom;
         AABB top;
         AABB right;
         AABB left;
+        bool collided = false;
 };
 #endif // BALL_H

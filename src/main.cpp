@@ -2,7 +2,7 @@
 #include "../include/paddle.h"
 #include "../include/ball.h"
 #include "kb_state.h"
-#include "kb_input.h"
+
 
 int main(int argc, char** argv){
 	if (SDL_Init(SDL_INIT_EVERYTHING) == -1){
@@ -11,7 +11,7 @@ int main(int argc, char** argv){
 	}
 
 	SDL_Window *win = nullptr;
-	win = SDL_CreateWindow("Hello World!", 100, 100, 640, 480,
+	win = SDL_CreateWindow("Hello World!", 100, 100, SCREEN_WIDTH, SCREEN_HEIGHT,
 					SDL_WINDOW_SHOWN);
 
     if (win == nullptr){
@@ -32,17 +32,15 @@ int main(int argc, char** argv){
     int w1, h1, w2, h2;
     SDL_QueryTexture(paddle1.GetTexture(), NULL, NULL, &w1, &h1);
     SDL_QueryTexture(paddle2.GetTexture(), NULL, NULL, &w2, &h2);
-    paddle1.Setx(0 + 5);                      paddle2.Setx(640 - w2  - 5);
-    paddle1.Sety(240 - h1/2);                 paddle2.Sety(240 - h2/2);
+    paddle1.Setx(0 + 5);                      paddle2.Setx(SCREEN_WIDTH - w2  - 5);
+    paddle1.Sety(SCREEN_HEIGHT / 2 - h1/2);   paddle2.Sety(SCREEN_HEIGHT / 2 - h2/2);
 
     KB_State kbstate;
 
     Ball ball;
     ball.SetTexture("assets/ball.png", ren);
-    ball.Setx(320 - 16);
-    ball.Sety(240 - h1/2);
-    std::cout << SDLK_UP;
-    KB_Input kbinput;
+    ball.Setx(SCREEN_WIDTH / 2 - 16);
+    ball.Sety(SCREEN_HEIGHT / 2 - h1/2);
 
 
 

@@ -1,1 +1,1 @@
-Requires SDL, SDL_IMAGE and SDL_TTF
+Requires SDL2, SDL_IMAGE and SDL_TTF

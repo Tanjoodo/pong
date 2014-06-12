@@ -8,21 +8,21 @@ Ball::Ball()
     top.x = 0;
     top.y = 0;
     top.h = 0;
-    top.w = 640;
+    top.w = SCREEN_WIDTH;
 
     bottom.x = 0;
-    bottom.y = 480;
+    bottom.y = SCREEN_HEIGHT;
     bottom.h = 0;
-    bottom.w = 640;
+    bottom.w = SCREEN_WIDTH;
 
     right.x = 0;
     right.y = 0;
-    right.h = 480;
+    right.h = SCREEN_HEIGHT;
     right.w = 0;
 
-    left.x = 640;
+    left.x = SCREEN_WIDTH;
     left.y = 0;
-    left.h = 480;
+    left.h = SCREEN_HEIGHT;
     left.w = 0;
 }
 
@@ -48,7 +48,7 @@ void Ball::Update(AABB aabb1, AABB aabb2)
         }
         else
         {
-            v_direction = (abs(y - aabb1.y)/(y - aabb1.y)) / 2;
+            v_direction = ((abs(y - aabb1.y)/(y - aabb1.y)) / 2) * 5 ;
 
         }
 
@@ -57,11 +57,11 @@ void Ball::Update(AABB aabb1, AABB aabb2)
         Update_AABB();
 
     }
-    else if (aabb.Intersects(aabb2))http://lists.gnu.org/archive/html/bug-bash/2001-02/msg00054.html
+    else if (aabb.Intersects(aabb2))
     {
         if (direction == 1) direction = 5;
         direction *= -1;
-        v_direction = abs(y - aabb2.y)/(y - aabb2.y);
+        v_direction = (abs(y - aabb2.y)/(y - aabb2.y)) * 5;
     }
 
     if (aabb.Intersects(top) || aabb.Intersects(bottom))
@@ -71,16 +71,16 @@ void Ball::Update(AABB aabb1, AABB aabb2)
     {
         direction = -5;
         v_direction = 1;
-        x = 320 - 16;
-        y = 240 - 64;
+        x = SCREEN_WIDTH / 2 - 16;
+        y = SCREEN_HEIGHT / 2- 64;
 
     }
     if (aabb.Intersects(left))
     {
         direction = 5;
         v_direction = 1;
-        x = 320 - 16;
-        y = 240 - 64;
+        x = SCREEN_WIDTH / 2 - 16;
+        y = SCREEN_HEIGHT / 2 - 64;
     }
 
 
