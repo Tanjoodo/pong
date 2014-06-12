@@ -13,9 +13,10 @@ int main(int argc, char** argv){
 	SDL_Window *win = nullptr;
 	win = SDL_CreateWindow("Hello World!", 100, 100, 640, 480,
 					SDL_WINDOW_SHOWN);
-	if (win == nullptr){
-		std::cout << SDL_GetError() << std::endl;
-		return 1;
+
+    if (win == nullptr){
+        std::cout << SDL_GetError() << std::endl;
+        return 1;
     }
 
 	SDL_Renderer *ren = nullptr;
