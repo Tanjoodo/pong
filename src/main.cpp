@@ -1,8 +1,10 @@
-#include "../include/framework.h"
+#include "framework.h"
 #include "../include/paddle.h"
 #include "../include/ball.h"
 #include "kb_state.h"
 #include <sstream>
+
+
 
 int main(int argc, char** argv){
 	if (SDL_Init(SDL_INIT_EVERYTHING) == -1){
@@ -46,7 +48,9 @@ int main(int argc, char** argv){
 
     SDL_Color white = {255,255,255};
     SDL_Texture *scoretext = renderText("0      0", "assets/alterebro-pixel-font.ttf", white, 150, ren);
-
+    std::ostringstream ss;
+    int score_w, score_h;
+    SDL_QueryTexture(scoretext, NULL, NULL, &score_w, &score_h);
 
     bool quit = false;
     SDL_Event e;
@@ -80,21 +84,18 @@ int main(int argc, char** argv){
             paddle1.UpScore();
         }
 
-
-
         if (ball_status)
         {
             SDL_DestroyTexture(scoretext); //We don't need the old texture anymore.
-            std::ostringstream ss;
-            std::string scores;
+            ss.str(std::string());
             ss << paddle1.GetScore() << "      " << paddle2.GetScore();
-            scores = ss.str();
-            scoretext = renderText(scores, "assets/alterebro-pixel-font.ttf",white,150,ren);
+            scoretext = renderText(ss.str(), "assets/alterebro-pixel-font.ttf",white,150,ren);
+            SDL_QueryTexture(scoretext, NULL, NULL, &score_w, &score_h);
         }
 
+
+
         SDL_RenderClear(ren);
-        int score_w, score_h;
-        SDL_QueryTexture(scoretext, NULL, NULL, &score_w, &score_h);
         renderTexture(scoretext, ren, SCREEN_WIDTH / 2 - score_w / 2, 0);
         paddle1.Draw(ren);
         paddle2.Draw(ren);

@@ -48,13 +48,14 @@
 		<Unit filename="include/ball.h" />
 		<Unit filename="include/framework.h" />
 		<Unit filename="include/game_object.h" />
-		<Unit filename="include/kb_input.h" />
+		<Unit filename="include/globals.h" />
+		<Unit filename="include/kb_state.h" />
 		<Unit filename="include/paddle.h" />
 		<Unit filename="src/aabb.cpp" />
 		<Unit filename="src/ball.cpp" />
 		<Unit filename="src/framework.cpp" />
 		<Unit filename="src/game_object.cpp" />
-		<Unit filename="src/kb_input.cpp" />
+		<Unit filename="src/kb_state.cpp" />
 		<Unit filename="src/main.cpp" />
 		<Unit filename="src/paddle.cpp" />
 		<Extensions>

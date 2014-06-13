@@ -14,8 +14,8 @@ class Ball : public GameObject
         void Draw(SDL_Renderer *ren);
     protected:
     private:
-        int direction = -5;
-        int v_direction = 5;
+        int direction = -10;
+        int v_direction = 1;
         AABB bottom;
         AABB top;
         AABB right;

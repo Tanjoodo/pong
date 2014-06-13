@@ -32,11 +32,11 @@ SDL_Texture* renderText(const std::string &message, const std::string &fontFile,
 {
     //Open the font
     TTF_Font *font = TTF_OpenFont(fontFile.c_str(), fontSize);
-    if (font == nullptr)
+    /*if (font == nullptr)
     {
         logSDLError(std::cout, "TTF_OpenFont");
         return nullptr;
-    }
+    }*/
 
 
     SDL_Surface *surf = TTF_RenderText_Blended(font, message.c_str(), color);
