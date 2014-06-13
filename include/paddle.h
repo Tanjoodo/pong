@@ -15,10 +15,11 @@ class Paddle : public GameObject
         void SetTexture(const std::string &path, SDL_Renderer *ren);
         void UpScore() {++score;}
         void ResetScore() { score = 0;}
+        int GetScore() {return score;}
     protected:
     private:
        // SDL_Texture *debug_ver;
-       int score;
+       int score = 0;
 
 };
 

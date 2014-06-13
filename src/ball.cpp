@@ -31,11 +31,9 @@ Ball::~Ball()
     SDL_DestroyTexture(texture);
 }
 
-//TODO: Add shit in regards to where it's going
-void Ball::Update(AABB aabb1, AABB aabb2)
+
+int Ball::Update(AABB aabb1, AABB aabb2)
 {
-    float old_x = x;
-    float old_y = y;
     y += v_direction;
     x += direction;
     Update_AABB();
@@ -55,8 +53,6 @@ void Ball::Update(AABB aabb1, AABB aabb2)
 
             }
 
-            //x = old_x;
-            //y = old_y;
             Update_AABB();
             collided = true;
         }
@@ -88,7 +84,9 @@ void Ball::Update(AABB aabb1, AABB aabb2)
         v_direction = 1;
         x = SCREEN_WIDTH / 2 - 16;
         y = SCREEN_HEIGHT / 2- 64;
+
         collided = true;
+        return 1;
     }
     else if (aabb.Intersects(left))
     {
@@ -97,13 +95,17 @@ void Ball::Update(AABB aabb1, AABB aabb2)
         x = SCREEN_WIDTH / 2 - 16;
         y = SCREEN_HEIGHT / 2 - 64;
         collided = true;
+        return 2;
 
     }
 
     else //no collision
     {
         collided = false;
+
     }
+
+    return 0;
 
 
 

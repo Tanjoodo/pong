@@ -2,7 +2,7 @@
 #include "../include/paddle.h"
 #include "../include/ball.h"
 #include "kb_state.h"
-
+#include <sstream>
 
 int main(int argc, char** argv){
 	if (SDL_Init(SDL_INIT_EVERYTHING) == -1){
@@ -25,6 +25,8 @@ int main(int argc, char** argv){
 		std::cout << SDL_GetError() << std::endl;
 		return 1;
 	}
+
+	TTF_Init();
 
     Paddle paddle1,                      paddle2;
     paddle1.SetTexture("assets/paddle.png", ren);
@@ -66,11 +68,27 @@ int main(int argc, char** argv){
         if (kbstate.GetKey(SDL_SCANCODE_ESCAPE))
             quit = true;
 
+        int ball_status = ball.Update(paddle1.GetAABB(), paddle2.GetAABB());
+        if (ball_status == 1)
+        {
+            paddle2.UpScore();
+        }
+        else if (ball_status == 2)
+        {
+            paddle1.UpScore();
+        }
 
-
-        ball.Update(paddle1.GetAABB(), paddle2.GetAABB());
+        std::ostringstream ss;
+        std::string scores;
+        ss << paddle1.GetScore() << "      " << paddle2.GetScore();
+        scores = ss.str();
+        SDL_Color white = {255,255,255};
+        SDL_Texture *scoretext = renderText(scores, "assets/alterebro-pixel-font.ttf",white,150,ren);
 
         SDL_RenderClear(ren);
+        int score_w, score_h;
+        SDL_QueryTexture(scoretext, NULL, NULL, &score_w, &score_h);
+        renderTexture(scoretext, ren, SCREEN_WIDTH / 2 - score_w / 2, 0);
         paddle1.Draw(ren);
         paddle2.Draw(ren);
         ball.Draw(ren);

@@ -10,7 +10,7 @@ class Ball : public GameObject
     public:
         Ball();
         virtual ~Ball();
-        void Update(AABB, AABB);
+        int Update(AABB, AABB);
         void Draw(SDL_Renderer *ren);
     protected:
     private:
