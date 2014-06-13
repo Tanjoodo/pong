@@ -53,8 +53,8 @@ int main(int argc, char** argv){
         while (SDL_PollEvent(&e))
         {
             if (e.type == SDL_QUIT) quit = true;
-            if(e.type == SDL_KEYDOWN || e.type == SDL_KEYUP)
-                kbstate.Update(e);
+            //if(e.type == SDL_KEYDOWN || e.type == SDL_KEYUP)
+                //kbstate.Update(e);
         }
 
         if (kbstate.GetKey(SDL_SCANCODE_W))
@@ -93,6 +93,7 @@ int main(int argc, char** argv){
         paddle2.Draw(ren);
         ball.Draw(ren);
         SDL_RenderPresent(ren);
+        SDL_DestroyTexture(scoretext);
 
     }
 
