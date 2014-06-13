@@ -39,8 +39,10 @@ int main(int argc, char** argv){
 
     Ball ball;
     ball.SetTexture("assets/ball.png", ren);
-    ball.Setx(SCREEN_WIDTH / 2 - 16);
-    ball.Sety(SCREEN_HEIGHT / 2 - h1/2);
+    //ball.Setx(SCREEN_WIDTH / 2 - 16);
+    //ball.Sety(SCREEN_HEIGHT / 2 - h1/2);
+    ball.Setx(5);
+    ball.Sety(SCREEN_HEIGHT / 2 - h1 / 2);
 
 
 

@@ -28,9 +28,10 @@ Ball::Ball()
 
 Ball::~Ball()
 {
-
+    SDL_DestroyTexture(texture);
 }
 
+//TODO: Add shit in regards to where it's going
 void Ball::Update(AABB aabb1, AABB aabb2)
 {
     float old_x = x;
@@ -40,47 +41,75 @@ void Ball::Update(AABB aabb1, AABB aabb2)
     Update_AABB();
     if (aabb.Intersects(aabb1))
     {
-        if (direction == 1) direction = 5;
-        direction *= -1;
-        if (64 - y - aabb1.y == 0)
+        if (!collided)
         {
-            v_direction = 0;
-        }
-        else
-        {
-            v_direction = ((abs(y - aabb1.y)/(y - aabb1.y)) / 2) * 5 ;
+            if (direction == 1) direction = 5;
+            direction *= -1;
+            if (64 - y - aabb1.y == 0)
+            {
+                v_direction = 0;
+            }
+            else
+            {
+                v_direction = ((abs(y - aabb1.y)/(y - aabb1.y)) / 2) * 5 ;
 
-        }
+            }
 
-        x = old_x;
-        y = old_y;
-        Update_AABB();
+            //x = old_x;
+            //y = old_y;
+            Update_AABB();
+            collided = true;
+        }
 
     }
     else if (aabb.Intersects(aabb2))
     {
-        if (direction == 1) direction = 5;
-        direction *= -1;
-        v_direction = (abs(y - aabb2.y)/(y - aabb2.y)) * 5;
+        if (!collided)
+        {
+            if (direction == 1) direction = 5;
+            direction *= -1;
+            v_direction = (abs(y - aabb2.y)/(y - aabb2.y)) * 5;
+            collided = true;
+        }
     }
 
-    if (aabb.Intersects(top) || aabb.Intersects(bottom))
-        v_direction *= -1;
-
-    if (aabb.Intersects(right))
+    else if (aabb.Intersects(top) || aabb.Intersects(bottom))
     {
-        direction = -5;
-        v_direction = 1;
-        x = SCREEN_WIDTH / 2 - 16;
-        y = SCREEN_HEIGHT / 2- 64;
+        if (!collided)
+        {
+            v_direction *= -1;
+            collided = true;
+        }
+    }
+
+    else if (aabb.Intersects(right) )
+    {
+        if (!collided)
+        {
+            direction = -5;
+            v_direction = 1;
+            x = SCREEN_WIDTH / 2 - 16;
+            y = SCREEN_HEIGHT / 2- 64;
+            collided = true;
+        }
 
     }
-    if (aabb.Intersects(left))
+    else if (aabb.Intersects(left))
     {
-        direction = 5;
-        v_direction = 1;
-        x = SCREEN_WIDTH / 2 - 16;
-        y = SCREEN_HEIGHT / 2 - 64;
+        if (!collided)
+        {
+            direction = 5;
+            v_direction = 1;
+            x = SCREEN_WIDTH / 2 - 16;
+            y = SCREEN_HEIGHT / 2 - 64;
+            collided = true;
+
+        }
+    }
+
+    else //no collision
+    {
+        collided = false;
     }
 
 
