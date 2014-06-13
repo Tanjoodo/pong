@@ -44,6 +44,8 @@ int main(int argc, char** argv){
     ball.Setx(SCREEN_WIDTH / 2 - 16);
     ball.Sety(SCREEN_HEIGHT / 2 - h1/2);
 
+    SDL_Color white = {255,255,255};
+    SDL_Texture *scoretext = renderText("0      0", "assets/alterebro-pixel-font.ttf", white, 150, ren);
 
 
     bool quit = false;
@@ -53,8 +55,8 @@ int main(int argc, char** argv){
         while (SDL_PollEvent(&e))
         {
             if (e.type == SDL_QUIT) quit = true;
-            //if(e.type == SDL_KEYDOWN || e.type == SDL_KEYUP)
-                //kbstate.Update(e);
+            if(e.type == SDL_KEYDOWN || e.type == SDL_KEYUP)
+                kbstate.Update(e);
         }
 
         if (kbstate.GetKey(SDL_SCANCODE_W))
@@ -78,12 +80,17 @@ int main(int argc, char** argv){
             paddle1.UpScore();
         }
 
-        std::ostringstream ss;
-        std::string scores;
-        ss << paddle1.GetScore() << "      " << paddle2.GetScore();
-        scores = ss.str();
-        SDL_Color white = {255,255,255};
-        SDL_Texture *scoretext = renderText(scores, "assets/alterebro-pixel-font.ttf",white,150,ren);
+
+
+        if (ball_status)
+        {
+            SDL_DestroyTexture(scoretext); //We don't need the old texture anymore.
+            std::ostringstream ss;
+            std::string scores;
+            ss << paddle1.GetScore() << "      " << paddle2.GetScore();
+            scores = ss.str();
+            scoretext = renderText(scores, "assets/alterebro-pixel-font.ttf",white,150,ren);
+        }
 
         SDL_RenderClear(ren);
         int score_w, score_h;
@@ -93,7 +100,7 @@ int main(int argc, char** argv){
         paddle2.Draw(ren);
         ball.Draw(ren);
         SDL_RenderPresent(ren);
-        SDL_DestroyTexture(scoretext);
+
 
     }
 
