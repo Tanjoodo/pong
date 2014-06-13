@@ -82,29 +82,22 @@ void Ball::Update(AABB aabb1, AABB aabb2)
         }
     }
 
-    else if (aabb.Intersects(right) )
+    else if (aabb.Intersects(right))
     {
-        if (!collided)
-        {
-            direction = -5;
-            v_direction = 1;
-            x = SCREEN_WIDTH / 2 - 16;
-            y = SCREEN_HEIGHT / 2- 64;
-            collided = true;
-        }
-
+        direction = -5;
+        v_direction = 1;
+        x = SCREEN_WIDTH / 2 - 16;
+        y = SCREEN_HEIGHT / 2- 64;
+        collided = true;
     }
     else if (aabb.Intersects(left))
     {
-        if (!collided)
-        {
-            direction = 5;
-            v_direction = 1;
-            x = SCREEN_WIDTH / 2 - 16;
-            y = SCREEN_HEIGHT / 2 - 64;
-            collided = true;
+        direction = 5;
+        v_direction = 1;
+        x = SCREEN_WIDTH / 2 - 16;
+        y = SCREEN_HEIGHT / 2 - 64;
+        collided = true;
 
-        }
     }
 
     else //no collision
