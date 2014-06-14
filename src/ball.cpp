@@ -15,15 +15,15 @@ Ball::Ball()
     bottom.h = 0;
     bottom.w = SCREEN_WIDTH;
 
-    right.x = 0;
+    right.x = 0 - 32;
     right.y = 0;
     right.h = SCREEN_HEIGHT;
-    right.w = 0;
+    right.w = 32;
 
     left.x = SCREEN_WIDTH;
     left.y = 0;
     left.h = SCREEN_HEIGHT;
-    left.w = 0;
+    left.w = 32;
 }
 
 Ball::~Ball()
