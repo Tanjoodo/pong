@@ -71,11 +71,7 @@ int Ball::Update(AABB aabb1, AABB aabb2)
 
     else if (aabb.Intersects(top) || aabb.Intersects(bottom))
     {
-        if (!collided)
-        {
-            v_direction *= -1;
-            collided = true;
-        }
+        v_direction *= -1;
     }
 
     else if (aabb.Intersects(right))

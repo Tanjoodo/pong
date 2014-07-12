@@ -405,21 +405,22 @@
 1401217108 source:c:\users\mohammed\projects\codeblocks projects\pong\paddle.cpp
 	"include/paddle.h"
 
-1402668749 c:\users\mohammed\projects\codeblocks projects\pong\include\framework.h
+1402990565 c:\users\mohammed\projects\codeblocks projects\pong\include\framework.h
 	<iostream>
 	<string>
 	"SDL2/SDL.h"
 	"SDL2/SDL_image.h"
 	"SDL2/SDL_ttf.h"
 
-1402668913 source:c:\users\mohammed\projects\codeblocks projects\pong\src\framework.cpp
+1402990781 source:c:\users\mohammed\projects\codeblocks projects\pong\src\framework.cpp
 	"../include/framework.h"
 
-1402669513 source:c:\users\mohammed\projects\codeblocks projects\pong\src\main.cpp
+1405174951 source:c:\users\mohammed\projects\codeblocks projects\pong\src\main.cpp
 	"framework.h"
 	"../include/paddle.h"
 	"../include/ball.h"
 	"kb_state.h"
+	"menu_option.h"
 	<sstream>
 
 1402598634 source:c:\users\mohammed\projects\codeblocks projects\pong\src\paddle.cpp
@@ -438,7 +439,7 @@
 1401702679 source:c:\users\mohammed\projects\codeblocks projects\pong\src\game_object.cpp
 	"game_object.h"
 
-1402734790 source:c:\users\mohammed\projects\codeblocks projects\pong\src\ball.cpp
+1405175508 source:c:\users\mohammed\projects\codeblocks projects\pong\src\ball.cpp
 	"../include/framework.h"
 	"../include/ball.h"
 	<iostream>
@@ -472,4 +473,11 @@
 
 1402668817 c:\users\mohammed\projects\codeblocks projects\pong\include\globals.h
 	"framework.h"
+
+1405173391 c:\users\mohammed\projects\codeblocks projects\pong\include\menu_option.h
+	"framework.h"
+
+1405173430 source:c:\users\mohammed\projects\codeblocks projects\pong\src\menu_option.cpp
+	"framework.h"
+	"menu_option.h"
 

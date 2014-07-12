@@ -57,6 +57,22 @@ SDL_Texture* renderText(const std::string &message, const std::string &fontFile,
     return texture;
 }
 
+SDL_Texture* renderText(const std::string &message, TTF_Font *font, SDL_Color color, int fontSize, SDL_Renderer *renderer)
+{
+    SDL_Surface *surf = TTF_RenderText_Blended(font, message.c_str(), color);
+    if (surf == nullptr)
+    {
+        logSDLError(std::cout, "TTF_RenderText");
+        return nullptr;
+    }
+    SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, surf);
+    if (texture == nullptr)
+        logSDLError(std::cout, "CreateTexture");
+    SDL_FreeSurface(surf);
+    return texture;
+
+}
+
 
 
 

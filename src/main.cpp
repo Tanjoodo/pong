@@ -2,9 +2,10 @@
 #include "../include/paddle.h"
 #include "../include/ball.h"
 #include "kb_state.h"
+#include "menu_option.h"
 #include <sstream>
 
-
+void menu();
 
 int main(int argc, char** argv){
 	if (SDL_Init(SDL_INIT_EVERYTHING) == -1){
@@ -29,6 +30,7 @@ int main(int argc, char** argv){
 	}
 
 	TTF_Init();
+	TTF_Font *font = TTF_OpenFont("assets/alterebro-pixel-font.ttf", 150);
 
     Paddle paddle1,                      paddle2;
     paddle1.SetTexture("assets/paddle.png", ren);
@@ -52,8 +54,81 @@ int main(int argc, char** argv){
     int score_w, score_h;
     SDL_QueryTexture(scoretext, NULL, NULL, &score_w, &score_h);
 
+    bool play = false;
     bool quit = false;
+    SDL_Texture *selection = loadTexture("assets/selection.png", ren);
+    int selec_location = 0; //I know it's missing a t, I'll leave it this way.
+    int max_select = 1;
+
+    SDL_Texture *play_text = renderText("Play","assets/alterebro-pixel-font.ttf", white, 64, ren);
+    SDL_Texture *exit_text = renderText("Exit","assets/alterebro-pixel-font.ttf", white, 64, ren);
+    MenuOption play_option(play_text, SCREEN_WIDTH / 2 - 128, 128);
+    MenuOption exit_option(exit_text, SCREEN_WIDTH / 2 - 128, 128 + 64);
+
+    bool prev_down_key = false;
+    bool prev_up_key = false;
+
     SDL_Event e;
+    while (!play)
+    {
+       while (SDL_PollEvent(&e))
+        {
+            if(e.type == SDL_KEYDOWN || e.type == SDL_KEYUP)
+                kbstate.Update(e);
+        }
+
+        if (kbstate.GetKey(SDL_SCANCODE_RETURN))
+           {
+               switch(selec_location)
+               {
+                   case 0:
+                    play = true;
+                    break;
+                   case 1:
+                    play = true;
+                    quit = true; //Skip game loop
+                    break;
+               }
+           }
+
+        if (kbstate.GetKey(SDL_SCANCODE_DOWN))
+        {
+            if (!prev_down_key)
+            {
+                if (selec_location < max_select)
+                    ++selec_location;
+                else
+                    selec_location = 0;
+
+                prev_down_key = true;
+            }
+        }
+        else
+            prev_down_key = false;
+
+        if (kbstate.GetKey(SDL_SCANCODE_UP))
+        {
+            if (!prev_up_key)
+            {
+                if (selec_location > 0)
+                    --selec_location;
+                else
+                    selec_location = max_select;
+
+                prev_up_key = true;
+            }
+        }
+        else
+            prev_up_key = false;
+
+        SDL_RenderClear(ren);
+        play_option.Draw(ren);
+        exit_option.Draw(ren);
+        renderTexture(selection, ren, 0 + SCREEN_WIDTH / 2 - 128, 128 + 64 * selec_location);
+        SDL_RenderPresent(ren);
+    }
+
+
     while (!quit)
     {
         while (SDL_PollEvent(&e))
@@ -89,8 +164,8 @@ int main(int argc, char** argv){
             SDL_DestroyTexture(scoretext); //We don't need the old texture anymore.
             ss.str(std::string());
             ss << paddle1.GetScore() << "      " << paddle2.GetScore();
-            scoretext = renderText(ss.str(), "assets/alterebro-pixel-font.ttf",white,150,ren);
-            SDL_QueryTexture(scoretext, NULL, NULL, &score_w, &score_h);
+            scoretext = renderText(ss.str(), font,white,150,ren);
+            //SDL_QueryTexture(scoretext, NULL, NULL, &score_w, &score_h);
         }
 
 
@@ -111,4 +186,3 @@ int main(int argc, char** argv){
 	SDL_Quit();
 	return 0;
 }
-
