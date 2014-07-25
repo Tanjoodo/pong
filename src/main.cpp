@@ -122,8 +122,8 @@ int main(int argc, char** argv){
             prev_up_key = false;
 
         SDL_RenderClear(ren);
-        play_option.Draw(ren);
         exit_option.Draw(ren);
+        play_option.Draw(ren);
         renderTexture(selection, ren, 0 + SCREEN_WIDTH / 2 - 128, 128 + 64 * selec_location);
         SDL_RenderPresent(ren);
     }

@@ -13,12 +13,9 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
-					<Add directory="../../../../../SDL2/SDL2-2.0.3/x86_64-w64-mingw32/include/SDL2" />
 					<Add directory="include" />
 				</Compiler>
 				<Linker>
-					<Add option="-lmingw32" />
-					<Add option="-lSDL2main" />
 					<Add option="-lSDL2" />
 					<Add directory="../../../../../SDL2/SDL2-2.0.3/x86_64-w64-mingw32/lib" />
 				</Linker>
@@ -40,6 +37,11 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Linker>
+			<Add option="-lSDL2_ttf" />
+			<Add option="-lSDL2_image" />
+			<Add option="-lSDL2" />
+		</Linker>
 		<Unit filename="include/aabb.h" />
 		<Unit filename="include/ball.h" />
 		<Unit filename="include/framework.h" />

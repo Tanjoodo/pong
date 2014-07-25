@@ -3,3 +3,6 @@
 *.gch
 *.dll
 *.swp
+*.o
+*.gch
+
