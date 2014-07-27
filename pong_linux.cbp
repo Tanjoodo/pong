@@ -12,6 +12,7 @@
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
+					<Add option="-std=c++11" />
 					<Add option="-g" />
 					<Add directory="include" />
 				</Compiler>
@@ -48,6 +49,7 @@
 		<Unit filename="include/game_object.h" />
 		<Unit filename="include/globals.h" />
 		<Unit filename="include/kb_state.h" />
+		<Unit filename="include/menu_option.h" />
 		<Unit filename="include/paddle.h" />
 		<Unit filename="src/aabb.cpp" />
 		<Unit filename="src/ball.cpp" />
@@ -55,6 +57,7 @@
 		<Unit filename="src/game_object.cpp" />
 		<Unit filename="src/kb_state.cpp" />
 		<Unit filename="src/main.cpp" />
+		<Unit filename="src/menu_option.cpp" />
 		<Unit filename="src/paddle.cpp" />
 		<Extensions>
 			<code_completion />

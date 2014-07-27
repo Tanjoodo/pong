@@ -12,23 +12,23 @@
 	"SDL2/SDL_image.h"
 	"SDL2/SDL_ttf.h"
 
-1406275477 source:/home/tanjoodo/projects/Pong/src/ball.cpp
+1406411446 source:/home/tanjoodo/projects/Pong/src/ball.cpp
 	"../include/framework.h"
 	"../include/ball.h"
 	<iostream>
 	<math.h>
 
-1406275477 /home/tanjoodo/projects/Pong/include/ball.h
+1406411446 /home/tanjoodo/projects/Pong/include/ball.h
 	"framework.h"
 	"aabb.h"
 	"game_object.h"
 	"paddle.h"
 
-1406275477 /home/tanjoodo/projects/Pong/include/game_object.h
+1406412912 /home/tanjoodo/projects/Pong/include/game_object.h
 	"framework.h"
 	"aabb.h"
 
-1406275477 /home/tanjoodo/projects/Pong/include/paddle.h
+1406413109 /home/tanjoodo/projects/Pong/include/paddle.h
 	"framework.h"
 	"aabb.h"
 	"game_object.h"
@@ -36,7 +36,7 @@
 1406275477 source:/home/tanjoodo/projects/Pong/src/framework.cpp
 	"../include/framework.h"
 
-1406275477 source:/home/tanjoodo/projects/Pong/src/game_object.cpp
+1406413053 source:/home/tanjoodo/projects/Pong/src/game_object.cpp
 	"game_object.h"
 
 1406275477 source:/home/tanjoodo/projects/Pong/src/kb_state.cpp
@@ -45,10 +45,10 @@
 1406275477 /home/tanjoodo/projects/Pong/include/kb_state.h
 	"framework.h"
 
-1406277543 source:/home/tanjoodo/projects/Pong/src/main.cpp
+1406412753 source:/home/tanjoodo/projects/Pong/src/main.cpp
 	"framework.h"
-	"../include/paddle.h"
-	"../include/ball.h"
+	"paddle.h"
+	"ball.h"
 	"kb_state.h"
 	"menu_option.h"
 	<sstream>
