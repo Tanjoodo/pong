@@ -57,6 +57,7 @@ SDL_Texture* renderText(const std::string &message, const std::string &fontFile,
     return texture;
 }
 
+
 SDL_Texture* renderText(const std::string &message, TTF_Font *font, SDL_Color color, int fontSize, SDL_Renderer *renderer)
 {
     SDL_Surface *surf = TTF_RenderText_Blended(font, message.c_str(), color);

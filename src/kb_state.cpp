@@ -1,4 +1,4 @@
-#include "kb_state.h"
+#include "../include/kb_state.h"
 
 void KB_State::Update(SDL_Event &event)
 {

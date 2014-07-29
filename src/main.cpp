@@ -1,8 +1,8 @@
-#include "framework.h"
+#include "../include/framework.h"
 #include "../include/paddle.h"
 #include "../include/ball.h"
-#include "kb_state.h"
-#include "menu_option.h"
+#include "../include/kb_state.h"
+#include "../include/menu_option.h"
 #include <sstream>
 
 void menu();

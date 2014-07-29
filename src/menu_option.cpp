@@ -1,5 +1,5 @@
-#include "framework.h"
-#include "menu_option.h"
+#include "../include/framework.h"
+#include "../include/menu_option.h"
 
 MenuOption::MenuOption(SDL_Texture *texture, int x, int y)
 {
