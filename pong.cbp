@@ -2,21 +2,28 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="pong2" />
+		<Option title="pong" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
-				<Option output="bin/Debug/pong2" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Debug/pong" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
 				</Compiler>
+				<Linker>
+					<Add option="-lmingw32" />
+					<Add option="-lSDL2main" />
+					<Add option="-lSDL2" />
+					<Add option="-lSDL2_image" />
+					<Add option="-lSDL2_ttf" />
+				</Linker>
 			</Target>
 			<Target title="Release">
-				<Option output="bin/Release/pong2" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Release/pong" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Release/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -31,6 +38,21 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="include/aabb.h" />
+		<Unit filename="include/ball.h" />
+		<Unit filename="include/framework.h" />
+		<Unit filename="include/game_object.h" />
+		<Unit filename="include/kb_state.h" />
+		<Unit filename="include/menu_option.h" />
+		<Unit filename="include/paddle.h" />
+		<Unit filename="src/aabb.cpp" />
+		<Unit filename="src/ball.cpp" />
+		<Unit filename="src/framework.cpp" />
+		<Unit filename="src/game_object.cpp" />
+		<Unit filename="src/kb_state.cpp" />
+		<Unit filename="src/main.cpp" />
+		<Unit filename="src/menu_option.cpp" />
+		<Unit filename="src/paddle.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
