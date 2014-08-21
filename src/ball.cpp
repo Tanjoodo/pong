@@ -24,6 +24,12 @@ Ball::Ball()
     left.y = 0;
     left.h = SCREEN_HEIGHT;
     left.w = 32;
+
+    impact_sound = Mix_LoadWAV("assets/ball.wav");
+    edge_sound   = Mix_LoadWAV("assets/ball_edge.wav");
+    score_sound  = Mix_LoadWAV("assets/ball_score.wav");
+    if (impact_sound == nullptr || edge_sound == nullptr || score_sound == nullptr) std::cout << "error loading wav" << std::endl;
+
 }
 
 Ball::~Ball()
@@ -49,13 +55,14 @@ int Ball::Update(AABB aabb1, AABB aabb2)
             }
             else
             {
-                v_direction = ((abs(y - aabb1.y)/(y - aabb1.y)) / 2) * 5 ;
-
+                v_direction = ((abs(y - aabb1.y)/(y - aabb1.y)) / 2) * 5 ; //magic maths
             }
 
             Update_AABB();
             collided = true;
         }
+
+        Mix_PlayChannel(-1, impact_sound, 0);
 
     }
     else if (aabb.Intersects(aabb2))
@@ -67,11 +74,14 @@ int Ball::Update(AABB aabb1, AABB aabb2)
             v_direction = (abs(y - aabb2.y)/(y - aabb2.y)) * 5;
             collided = true;
         }
+
+        Mix_PlayChannel(-1, impact_sound, 0);
     }
 
     else if (aabb.Intersects(top) || aabb.Intersects(bottom))
     {
         v_direction *= -1;
+        Mix_PlayChannel(-1, edge_sound, 0);
     }
 
     else if (aabb.Intersects(right))
@@ -82,6 +92,7 @@ int Ball::Update(AABB aabb1, AABB aabb2)
         y = SCREEN_HEIGHT / 2- 64;
 
         collided = true;
+        Mix_PlayChannel(-1, score_sound, 0);
         return 1;
     }
     else if (aabb.Intersects(left))
@@ -91,6 +102,7 @@ int Ball::Update(AABB aabb1, AABB aabb2)
         x = SCREEN_WIDTH / 2 - 16;
         y = SCREEN_HEIGHT / 2 - 64;
         collided = true;
+        Mix_PlayChannel(-1, score_sound, 0);
         return 2;
 
     }
@@ -100,7 +112,6 @@ int Ball::Update(AABB aabb1, AABB aabb2)
         collided = false;
 
     }
-
     return 0;
 
 

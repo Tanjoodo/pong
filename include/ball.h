@@ -21,5 +21,8 @@ class Ball : public GameObject
         AABB right;
         AABB left;
         bool collided = false;
+        Mix_Chunk *impact_sound; //sound for hitting paddles
+        Mix_Chunk *edge_sound; //sound for hitting edges
+        Mix_Chunk *score_sound; //sound for scoring
 };
 #endif // BALL_H

@@ -29,6 +29,12 @@ int main(int argc, char** argv){
 		return 1;
 	}
 
+	if (Mix_OpenAudio(22050, MIX_DEFAULT_FORMAT, 2, 1024) == -1)
+	{
+        std::cout << "audio init error" << std::endl;
+        return 1;
+	}
+
 	TTF_Init();
 	TTF_Font *font = TTF_OpenFont("assets/alterebro-pixel-font.ttf", 150);
 
